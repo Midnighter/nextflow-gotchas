@@ -1,6 +1,6 @@
 # Nextflow Gotchas
 
-A collection of unexpected challenges and learnings with [nextflow](https://nextflow.io/) and [nf-core](https://nf-co.re/).
+A collection of unexpected challenges and learnings with [nextflow](https://nextflow.io/) and [nf-core](https://nf-co.re/). The provided examples reflect my journey in learning nextflow and generally assume an intermediate familiarity with nextflow.
 
 ## Minimal, Reproducible Examples
 
@@ -16,6 +16,7 @@ What is a minimal, reproducible example? As explained very well on [StackOverflo
 
 * [Global variables only in shell blocks](shell-global-only/README.md)
 * [Exhausting single element channels](singleton-channel/README.md)
+* [Modifying mutable elements](shallow-copy/README.md)
 
 ## Copyright
 
