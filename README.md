@@ -15,6 +15,7 @@ What is a minimal, reproducible example? As explained very well on [StackOverflo
 ## Table of Contents
 
 * [Global variables only in shell blocks](shell-global-only/README.md)
+* [Exhausting single element channels](singleton-channel/README.md)
 
 ## Copyright
 
