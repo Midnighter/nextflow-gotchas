@@ -1,0 +1,51 @@
+site_name: Nextflow Gotchas
+site_description: A collection of unexpected challenges and learnings with nextflow and nf-core.
+site_author: Moritz E. Beber
+site_url: https://midnighter.github.io/nextflow-gotchas
+
+theme:
+  features:
+    - navigation.instant
+    - navigation.top
+  name: material
+  palette: 
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate 
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/slack
+      link: https://join.slack.com/t/nextflow/shared_invite/zt-11iwlxtw5-R6SNBpVksOJAx5sPOXNrZg
+      name: Join the nextflow Slack
+    - icon: fontawesome/brands/slack
+      link: https://nfcore.slack.com/
+      name: Join the nf-core Slack
+    - icon: fontawesome/brands/github
+      link: https://github.com/Midnighter
+      name: Moritz on GitHub
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/me_beber
+      name: Moritz on Twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/moritz-beber-b597a55a/
+      name: Moritz on LinkedIn
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0000-0003-2406-1978
+      name: Moritz on LinkedIn
+
+copyright: Copyright &copy 2022, Moritz E. Beber.
+
+repo_url: https://github.com/Midnighter/nextflow-gotchas
+repo_name: Midnighter/nextflow-gotchas

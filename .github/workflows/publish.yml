@@ -1,0 +1,24 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Upgrade base
+        run: |
+          pip install --upgrade pip setuptools wheel
+      - name: Install Material for MkDocs
+        run: |
+          pip install --no-deps --require-hashes --requirement requirements.txt
+      - name: Publish to gh-pages
+        run: |
+          mkdocs gh-deploy --force
