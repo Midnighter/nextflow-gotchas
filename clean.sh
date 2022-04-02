@@ -2,4 +2,4 @@
 
 set -eu
 
-rm -rf **/work **/.nextflow*
+rm -rf work **/work **/.nextflow* .nextflow*
