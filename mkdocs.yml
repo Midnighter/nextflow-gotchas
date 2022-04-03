@@ -66,3 +66,6 @@ copyright: Copyright &copy 2022, Moritz E. Beber.
 
 repo_url: https://github.com/Midnighter/nextflow-gotchas
 repo_name: Midnighter/nextflow-gotchas
+
+watch:
+  - examples
