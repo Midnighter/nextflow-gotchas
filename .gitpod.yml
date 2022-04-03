@@ -2,7 +2,7 @@ image: nfcore/gitpod:latest
 
 tasks:
   - name: Serve mkdocs
-    init: |
+    before: |
       python -m pip install --no-deps --require-hashes --requirement requirements.txt
     command: |
       mkdocs serve --dev-addr '0.0.0.0:8000'
