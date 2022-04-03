@@ -1,5 +1,7 @@
 # Introduction
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+
 A collection of unexpected challenges and learnings with [nextflow](https://nextflow.io/) and [nf-core](https://nf-co.re/). The provided examples reflect my journey in learning nextflow and generally assume an intermediate familiarity with nextflow.
 
 ## Gotchas
@@ -16,7 +18,7 @@ As explained very well on [StackOverflow](https://stackoverflow.com/help/minimal
 
 ## Contributing
 
-Contributions are most welcome and I very much aim for this to be a community-driven project. [Phil Ewels](https://github.com/ewels/) and I are already talking about how to best integrate these examples into the [nf-core website](https://nf-co.re/). Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas/issues) or message me on either of the Slack teams linked in the footer regarding any examples, ideas, or suggestions that you may have.
+Contributions are most welcome and I very much aim for this to be a community-driven project. In fact, most of the solutions provided here came from discussions on the [nextflow](https://join.slack.com/t/nextflow/shared_invite/zt-11iwlxtw5-R6SNBpVksOJAx5sPOXNrZg) or [nf-core Slack](https://nfcore.slack.com/). Both are incredible communities and I can only recommend that you join. [Phil Ewels](https://github.com/ewels/) and I are already talking about how to best integrate these examples into the [nf-core website](https://nf-co.re/). Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas/issues) or message me on either of the Slack teams linked in the footer regarding any examples, ideas, or suggestions that you may have.
 
 ## Copyright
 
