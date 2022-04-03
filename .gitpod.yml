@@ -6,6 +6,9 @@ tasks:
       python -m pip install --no-deps --require-hashes --requirement requirements.txt
     command: |
       mkdocs serve --dev-addr '0.0.0.0:8000'
+  - name: Run nextflow
+    command: |
+      nextflow info
 
 ports:
   - port: 8000
