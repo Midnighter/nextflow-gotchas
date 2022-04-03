@@ -111,7 +111,7 @@ This was the clue I needed to find a solution.
 
 ## Solution
 
-There are a couple of gotchas in nextflow with locally scoped variables (variables defined with `def`). So why not try with a process global? Removing the `def` keyword finally made the process run as expected. You can see for yourself by running the following:
+There are [a couple of gotchas in nextflow with locally scoped variables](/nextflow-gotchas/gotchas/variable-scope/) (variables defined with `def`). So why not try with a process global? Removing the `def` keyword finally made the process run as expected. You can see for yourself by running the following:
 
 ```groovy title="solution.nf" linenums="1" hl_lines="9"
 --8<-- "shell-global-only/solution.nf"
