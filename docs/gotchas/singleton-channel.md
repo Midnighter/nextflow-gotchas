@@ -47,6 +47,7 @@ Please note the following admonition from the nextflow documentation:
     A value channel is implicitly created by a process when an input specifies a simple value in the `from` clause. Moreover, a value channel is also implicitly created as output for a process whose inputs are only value channels.
 
 This means that a process that gets passed a value and, for example, downloads a file, implicitly has a value channel created for that file and it can be reused indefinitely.
+
 ## Combinations
 
 If you have multiple channels of different numbers of elements but more than one element such that a value channel is not an option, you can apply some transformations to achieve the correct outcome.

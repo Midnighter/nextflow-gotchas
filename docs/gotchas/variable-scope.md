@@ -1,4 +1,3 @@
-
 # Variable scope
 
 Under most circumstances it is recommended to use local variable scope. In Groovy and thus nextflow, you do this with the `def` keyword. However, there are some situations where this can be awkward or even surprising.

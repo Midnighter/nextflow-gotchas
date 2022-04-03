@@ -4,8 +4,8 @@ A collection of unexpected challenges and learnings with [nextflow](https://next
 
 The contents of this repository are best enjoyed from https://midnighter.github.io/nextflow-gotchas. The site is generated using [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) and organized as follows:
 
-* [`docs/`](docs/) contains the markdown source files
-* [`examples/`](examples/) holds the nextflow workflows
+-   [`docs/`](docs/) contains the markdown source files
+-   [`examples/`](examples/) holds the nextflow workflows
 
 ## Contributing
 

@@ -24,7 +24,7 @@ theme:
     - navigation.instant
     - navigation.top
   name: material
-  palette: 
+  palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: green
@@ -33,7 +33,7 @@ theme:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate 
+      scheme: slate
       primary: green
       accent: light green
       toggle:
