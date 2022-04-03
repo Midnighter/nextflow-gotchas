@@ -2,21 +2,14 @@
 
 A collection of unexpected challenges and learnings with [nextflow](https://nextflow.io/) and [nf-core](https://nf-co.re/). The provided examples reflect my journey in learning nextflow and generally assume an intermediate familiarity with nextflow.
 
-## Minimal, Reproducible Examples
+The contents of this repository are best enjoyed from https://midnighter.github.io/nextflow-gotchas. The site is generated using [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) and organized as follows:
 
-What is a minimal, reproducible example? As explained very well on [StackOverflow](https://stackoverflow.com/help/minimal-reproducible-example):
+* [`docs/`](docs/) contains the markdown source files
+* [`examples/`](examples/) holds the nextflow workflows
 
-> Your code examples should be
->
-> * Minimal – Use as little code as possible that still produces the same problem
-> * Complete – Provide all parts someone else needs to reproduce your problem in the question itself
-> * Reproducible – Test the code you're about to provide to make sure it reproduces the problem
+## Contributing
 
-## Table of Contents
-
-* [Global variables only in shell blocks](shell-global-only/README.md)
-* [Exhausting single element channels](singleton-channel/README.md)
-* [Modifying mutable elements](shallow-copy/README.md)
+Contributions are most welcome and I very much aim for this to be a community-driven project. Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas/issues) if you have a good example, an idea, or any other suggestion.
 
 ## Copyright
 

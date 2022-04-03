@@ -14,9 +14,9 @@ As explained very well on [StackOverflow](https://stackoverflow.com/help/minimal
 > * Complete – Provide all parts someone else needs to reproduce your problem in the question itself
 > * Reproducible – Test the code you're about to provide to make sure it reproduces the problem
 
-## Contributions
+## Contributing
 
-Contributions are most welcome and I very much aim for this to be a community-driven project. [Phil Ewels](https://github.com/ewels/) and I are already talking about how to best integrate these examples into the [nf-core website](https://nf-co.re/). Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas) or message me on either of the Slack teams linked in the footer.
+Contributions are most welcome and I very much aim for this to be a community-driven project. [Phil Ewels](https://github.com/ewels/) and I are already talking about how to best integrate these examples into the [nf-core website](https://nf-co.re/). Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas/issues) or message me on either of the Slack teams linked in the footer regarding any examples, ideas, or suggestions that you may have.
 
 ## Copyright
 
