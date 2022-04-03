@@ -1,5 +1,7 @@
 # Combine a list element
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+
 ## Problem
 
 Say that you have a tool which takes a parameter and a bunch of files and does something with those. This is exemplified by the process `CAT` below. My first approach was to [`collect`](https://www.nextflow.io/docs/latest/operator.html#collect) the files before [combining](https://www.nextflow.io/docs/latest/operator.html#combine) them with the parameter. See the following workflow as an example.

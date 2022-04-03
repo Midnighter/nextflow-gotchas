@@ -1,5 +1,7 @@
 # Exhausting single element channels
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+
 ## Problem
 
 Processes that accept more than one argument, will be executed as many times as the smaller number of elements in either channel, for example, if you have a channel with five elements and another with two elements, the process will be called twice. If you have a channel with a single element, it is not reused automatically but the process is executed just once. This can be surprising because [nextflow in DSL2 copies channels as needed](https://www.nextflow.io/docs/latest/dsl2.html#channel-forking).

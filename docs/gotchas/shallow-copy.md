@@ -1,5 +1,7 @@
 # Modifying mutable elements
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+
 ## Problem
 
 When working with [nf-core modules](https://nf-co.re/modules), a ubiquitous pattern is to pass around sample metadata as a [maps](https://groovy-lang.org/groovy-dev-kit.html#Collections-Maps). Maps are mutable objects.

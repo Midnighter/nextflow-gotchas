@@ -1,5 +1,7 @@
 # Global variables only in shell blocks
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+
 ## Problem
 
 A very common pattern when working with [nf-core modules](https://nf-co.re/modules) is to define local arguments for a command. This pattern allows for defining some process-local defaults, as well as the ability to override those defaults from a configuration file.
