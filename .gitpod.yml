@@ -17,7 +17,7 @@ ports:
 github:
   prebuilds:
     main: true
-    devel: true
+    branches: true
     addBadge: true
     addCheck: prevent-merge-on-error
 
