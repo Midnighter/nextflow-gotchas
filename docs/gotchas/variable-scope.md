@@ -1,6 +1,6 @@
 # Variable scope
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas/blob/main/docs/gotchas/variable-scope.md)
 
 Under most circumstances it is recommended to use local variable scope. In Groovy and thus nextflow, you do this with the `def` keyword. However, there are some situations where this can be awkward or even surprising.
 

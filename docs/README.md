@@ -1,6 +1,6 @@
 # Introduction
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas/blob/main/docs/README.md)
 
 A collection of unexpected challenges and learnings with [nextflow](https://nextflow.io/) and [nf-core](https://nf-co.re/). The provided examples reflect my journey in learning nextflow and generally assume an intermediate familiarity with nextflow.
 
