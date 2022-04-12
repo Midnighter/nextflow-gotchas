@@ -1,0 +1,8 @@
+{
+  "files": ["README.md"],
+  "imageSize": 110,
+  "contributorsPerLine": 4,
+  "contributorsSortAlphabetically": tru,
+  "skipCi": "true",
+  "contributors": []
+}
