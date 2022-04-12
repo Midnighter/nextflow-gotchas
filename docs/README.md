@@ -35,6 +35,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
   <tr>
     <td align="center"><a href="https://github.com/FriederikeHanssen"><img src="https://avatars.githubusercontent.com/u/12273093?v=4?s=110" width="110px;" alt=""/><br /><sub><b>FriederikeHanssen</b></sub></a><br /><a href="https://github.com/Midnighter/nextflow-gotchas/commits?author=FriederikeHanssen" title="Documentation">📖</a> <a href="#example-FriederikeHanssen" title="Examples">💡</a></td>
     <td align="center"><a href="https://github.com/jfy133"><img src="https://avatars.githubusercontent.com/u/17950287?v=4?s=110" width="110px;" alt=""/><br /><sub><b>James A. Fellows Yates</b></sub></a><br /><a href="https://github.com/Midnighter/nextflow-gotchas/commits?author=jfy133" title="Documentation">📖</a> <a href="#example-jfy133" title="Examples">💡</a></td>
+    <td align="center"><a href="https://github.com/SPPearce"><img src="https://avatars.githubusercontent.com/u/24893913?v=4?s=110" width="110px;" alt=""/><br /><sub><b>Simon Pearce</b></sub></a><br /><a href="https://github.com/Midnighter/nextflow-gotchas/commits?author=SPPearce" title="Documentation">📖</a> <a href="#example-SPPearce" title="Examples">💡</a></td>
   </tr>
 </table>
 
