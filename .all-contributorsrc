@@ -20,6 +20,16 @@
         "doc",
         "example"
       ]
+    },
+    {
+      "login": "jfy133",
+      "name": "James A. Fellows Yates",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17950287?v=4",
+      "profile": "https://github.com/jfy133",
+      "contributions": [
+        "doc",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 4,
