@@ -16,6 +16,10 @@ As explained very well on [StackOverflow](https://stackoverflow.com/help/minimal
 > -   Complete – Provide all parts someone else needs to reproduce your problem in the question itself
 > -   Reproducible – Test the code you're about to provide to make sure it reproduces the problem
 
+## Errors
+
+Nextflow error messages and stack traces can, in all honesty, be quite maddening. Hopefully, yours is among the common ones that we describe [here](/nextflow-gotchas/errors/).
+
 ## Contributing
 
 Contributions are most welcome and I very much aim for this to be a community-driven project. In fact, most of the solutions provided here came from discussions on the [nextflow](https://join.slack.com/t/nextflow/shared_invite/zt-11iwlxtw5-R6SNBpVksOJAx5sPOXNrZg) or [nf-core Slack](https://nfcore.slack.com/). Both are incredible communities and I can only recommend that you join. [Phil Ewels](https://github.com/ewels/) and I are already talking about how to best integrate these examples into the [nf-core website](https://nf-co.re/). Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas/issues) or message me on either of the Slack teams linked in the footer regarding any examples, ideas, or suggestions that you may have.
