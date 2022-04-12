@@ -24,7 +24,20 @@ Nextflow error messages and stack traces can, in all honesty, be quite maddening
 
 Contributions are most welcome and I very much aim for this to be a community-driven project. In fact, most of the solutions provided here came from discussions on the [nextflow](https://join.slack.com/t/nextflow/shared_invite/zt-11iwlxtw5-R6SNBpVksOJAx5sPOXNrZg) or [nf-core Slack](https://nfcore.slack.com/). Both are incredible communities and I can only recommend that you join. [Phil Ewels](https://github.com/ewels/) and I are already talking about how to best integrate these examples into the [nf-core website](https://nf-co.re/). Please [open an issue on the repository](https://github.com/Midnighter/nextflow-gotchas/issues) or message me on either of the Slack teams linked in the footer regarding any examples, ideas, or suggestions that you may have.
 
-## Credits
+## Contributors ✨
+
+Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Acknowledgements
 
 As mentioned, nextflow has an amazing community. I want to mention a few people here who have been especially helpful in my interactions. In alphabetical order:
 
