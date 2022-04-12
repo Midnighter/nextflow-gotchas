@@ -10,7 +10,18 @@
   "imageSize": 110,
   "commit": true,
   "commitConvention": "none",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "FriederikeHanssen",
+      "name": "FriederikeHanssen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12273093?v=4",
+      "profile": "https://github.com/FriederikeHanssen",
+      "contributions": [
+        "doc",
+        "example"
+      ]
+    }
+  ],
   "contributorsPerLine": 4,
   "contributorsSortAlphabetically": true
 }
