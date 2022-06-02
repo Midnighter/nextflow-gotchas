@@ -6,9 +6,9 @@
 
 In many cases, the order in which you define steps of a Nextflow script does not influence the order of execution. This is due to the nature of the process and channel dataflow paradigm used by Nextflow.
 
-In contrast, where a Nextflow _operator_ is placed within a script _does_ influence when it is executed.
+In contrast, where a Nextflow [_operator_](https://www.nextflow.io/docs/latest/operator.html) is placed within a script _does_ influence when it is executed.
 
-One such example is the `mix`ing of channels together prior passing it to a process. If a `.mix()` is specified _after_ the execution of a process that uses that channel, the contents of that particular `.mix()` will NOT be included in the execution of the process.
+One such example is the [`mix`ing](https://www.nextflow.io/docs/latest/operator.html#mix) of channels together prior passing it to a process. If a `.mix()` is specified _after_ the execution of a process that uses that channel, the contents of that particular `.mix()` will **not** be included in the execution of the process.
 
 A good example of this is [nf-core](https://nf-co.re) version reporting. In nf-core pipelines, a 'commmon' channel (`ch_versions`) is created early in the pipeline script. When each process is executed, a versions file from that process is then `mix`ed into this common channel. Finally, this common channel containing all versions files is sent to a process (`CUSTOM_DUMPSOFTWAREVERSIONS`) that aggregates all versions into a single file.
 
