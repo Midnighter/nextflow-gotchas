@@ -1,5 +1,7 @@
 # No process matching config selector warnings
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas/blob/main/docs/gotchas/process-selector-warn.md)
+
 ## Problem
 
 You are using a process twice in a pipeline in two different subworkflows.  Additionally, both are optional to run, so you wrap them in `if` statements.
