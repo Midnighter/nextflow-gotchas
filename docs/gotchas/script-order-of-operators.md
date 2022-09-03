@@ -12,7 +12,7 @@ A good example of this is [nf-core](https://nf-co.re) version reporting. In nf-c
 
 In the example below, mixing the `BAR` process' version file into `ch_versions` is defined to happen after `CUSTOM_DUMPSOFTWAREVERSIONS`. In this case, the version of `BAR` would **not** be included in the execution of the `CUSTOM_DUMPSOFTWAREVERSIONS` process.
 
-```nextflow
+```groovy
 ch_versions = Channel.empty()
 
 FOO()
@@ -38,7 +38,7 @@ whereby the `BAR` version is not included in the file.
 
 Ensure that all `mix` invocations are defined in the script prior to the subsequent process the channel will be included in.
 
-```nexflow
+```groovy
 ch_versions = Channel.empty()
 
 FOO()
