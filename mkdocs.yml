@@ -5,6 +5,7 @@ site_url: https://midnighter.github.io/nextflow-gotchas
 
 markdown_extensions:
   - admonition
+  - footnotes
   - toc:
       permalink: true
   - pymdownx.highlight:
