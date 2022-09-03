@@ -2,67 +2,100 @@
 
 ## Problem
 
-You have used a module twice in a pipeline, but are placed in two different subworkflows.
+You are using a process twice in a pipeline in two different subworkflows.  Additionally, both are optional to run, so you wrap them in `if` statements.
 
-In this case, both are optional to run, so you wrap them in `if` statements.
-
-```nextflow
+```groovy
 if ( params.run_module ) {
-    MODULE ()
+    PROCESS ()
 }
 ```
 
-You may need to provide each of them different `publishDir` options, so to disambiguate between the two in a config file, you differentiate them with a `withName:` selector and give them the fully resolved path name (`PIPELINE:WORKFLOW:SUBWORKFLOW:MODULE`).
+You may need to provide each of them different [`publishDir`](https://www.nextflow.io/docs/latest/process.html#publishdir) options so to disambiguate between the two in a [configuration file](https://www.nextflow.io/docs/latest/config.html#configuration-file), you differentiate them using a [`withName` selector](https://www.nextflow.io/docs/latest/config.html#process-selectors) and give them the fully resolved path name `PIPELINE:WORKFLOW:SUBWORKFLOW:PROCESS`.
 
-```nextflow
+```groovy
 process {
-    withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW:MODULE' {
+    withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW_ONE:PROCESS' {
          publishDir = [
-            path: { "${params.outdir}/MODULE_ONE" },
+            path: { "${params.outdir}/PROCESS_ONE" },
+        ]
+    }
+    withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW_TWO:PROCESS' {
+         publishDir = [
+            path: { "${params.outdir}/PROCESS_TWO" },
         ]
     }
 }
 ```
 
-This should be sufficient right to distinguish between the two, right?
+This should be sufficient to distinguish between the two, right?
 
 But then when you run your pipeline, with the `if` statement around the module set to `false`
 
-```console
-$ nextflow run main.nf --run_module false
+```bash
+nextflow run main.nf --run_module false
 ```
 
 You suddenly get the following warnings:
 
-```console
-WARN: There's no process matching config selector: <PIPELINE>:<WORKFLOW>:<SUBWORKFLOW>:<MODULE>
-WARN: There's no process matching config selector: <PIPELINE>:<WORKFLOW>:<SUBWORKFLOW>:<MODULE>
+```output
+WARN: There's no process matching config selector: <PIPELINE>:<WORKFLOW>:<SUBWORKFLOW_ONE>:<PROCESS>
+WARN: There's no process matching config selector: <PIPELINE>:<WORKFLOW>:<SUBWORKFLOW_TWO>:<PROCESS>
 ```
 
-...huh?
+...huh? :thinking:
 
 ## Solution
 
-Apparently, the different ways of specifying a module with the `withName:` selector have different behaviours.
+Apparently, the different ways of specifying a module using the [`withName` selector](https://www.nextflow.io/docs/latest/config.html#process-selectors) have different behaviours.
 
-Only a explicit module name can copy with 'optional' execution and have a selector still picked up, even if it's 'turned off'.
-
-Fully resolved paths or wildcarded `withName` selectors cannot be evaluated by Nextflow in this manner, and thus give you the `WARN`ings.
+* Only an explicit module name can cope with 'optional' execution and have a selector still picked up, even if it's 'turned off'.
+* Fully resolved paths or [wildcarded `withName` selectors](https://www.nextflow.io/docs/latest/config.html#selector-expressions) cannot be evaluated by Nextflow in this manner, and thus give you warnings like above.
 
 Here, your solutions are:
 
-1. Give each of the two modules a unique name with `as` in the include statement in the pipeline code, and use that in the config file
+1. Give each of the two processes a unique name via an [alias](https://www.nextflow.io/docs/latest/dsl2.html#module-aliases) and use that in the configuration file.
 
-    ```nextflow
-    include { MODULE as MODULE_FIRST } from 'modules/<module>'
+    `subworkflows/subworkflow_one.nf`:
+    ```groovy
+    include { PROCESS as PROCESS_ONE } from 'modules/process_module'
     ```
 
-2. Wrap the `withName:` selector for the module ALSO in the config file
-
+    `subworkflows/subworkflow_two.nf`:
+    ```groovy
+    include { PROCESS as PROCESS_TWO } from 'modules/process_module'
     ```
-    if ( param.run_module ) {
-        withName: '<PIPELINE>:<WORKFLOW>:<SUBWORKFLOW>:<MODULE>' {
-            publishDir = [ <...options...>]
+
+    Configuration:
+    ```groovy
+    process {
+        withName: 'PROCESS_ONE' {
+            publishDir = [
+                path: { "${params.outdir}/PROCESS_ONE" },
+            ]
+        }
+        withName: 'PROCESS_TWO' {
+            publishDir = [
+                path: { "${params.outdir}/PROCESS_TWO" },
+            ]
+        }
+    }
+    ```
+
+2. Wrap the `withName` selector for the module **also** in the configuration file:
+
+    ```groovy
+    process {
+        if ( param.run_module ) {
+            withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW_ONE:PROCESS' {
+                publishDir = [
+                    path: { "${params.outdir}/PROCESS_ONE" },
+                ]
+            }
+            withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW_TWO:PROCESS' {
+                publishDir = [
+                    path: { "${params.outdir}/PROCESS_TWO" },
+                ]
+            }
         }
     }
     ```
