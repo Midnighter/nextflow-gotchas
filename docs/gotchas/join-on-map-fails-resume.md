@@ -1,5 +1,7 @@
 # Joining channels using a map as key
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas/blob/main/docs/gotchas/join-on-map-fails-resume.md)
+
 ## Problem
 
 You want to [`join`](https://www.nextflow.io/docs/latest/operator.html#join) two channels using identical [maps](https://www.nextflow.io/docs/latest/script.html#maps) as the key to join by.
@@ -59,16 +61,8 @@ def ch_joined = left.join(right).map { [it[1], it[2], it[4]] }  // (3)
     tuple val(meta), val(count), path(read_pairs)
     ```
 
-In order to generally, safely join two channels on a map key, I therefore propose you use the following function.
+In order to generally, safely join two channels on a map key, I therefore propose you use the following function which was developed together with :magic_wand: [Mahesh Binzer-Panchal](https://github.com/mahesh-panchal)
 
-```groovy
-def joinOnKey(left, right, String key, int leftSize) {
-    // Extract the `key` from the left map which **must** be the first element.
-    def newLeft = left.map { [it.head()[key], it.head()] + it.tail() }
-    // Extract the `key` from the right map which **must** be the first element.
-    def newRight = right.map { [it.head()[key], it.head()] + it.tail() }
-    // Drop the key again from the output, as well as the second meta map introduced
-    // by the `newRight` channel.
-    return newLeft.join(newRight).map { it[1..leftSize] + it[(leftSize + 2)..-1] }
-}
+```groovy title="lib/CustomChannelOperators.groovy" linenums="1"
+--8<-- "join-on-map-fails-resume/lib/CustomChannelOperators.groovy"
 ```

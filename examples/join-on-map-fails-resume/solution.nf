@@ -58,10 +58,10 @@ workflow {
     def ch_param = Channel.of(1..500)
         .map { [id: it, prefix: "${it}"] }
 
-    def left = LEFT(ch_param).map { [it[0].id, it[0], it[1]] }
-    def right = RIGHT(ch_param).map { [it[0].id, it[0], it[1]] }
+    LEFT(ch_param)
+    RIGHT(ch_param)
 
-    def ch_joined = left.join(right).map { [it[1], it[2], it[4]] }
+    def ch_joined = CustomChannelOperators.joinOnKeys(LEFT.out, RIGHT.out, 'id', failOnMismatch: true)
 
     COMPARE(ch_joined)
 }
