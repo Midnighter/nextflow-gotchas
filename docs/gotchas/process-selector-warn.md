@@ -14,7 +14,7 @@ if ( params.run_module ) {
 
 You may need to provide each of them different [`publishDir`](https://www.nextflow.io/docs/latest/process.html#publishdir) options so to disambiguate between the two in a [configuration file](https://www.nextflow.io/docs/latest/config.html#configuration-file), you differentiate them using a [`withName` selector](https://www.nextflow.io/docs/latest/config.html#process-selectors) and give them the fully resolved path name `PIPELINE:WORKFLOW:SUBWORKFLOW:PROCESS`.
 
-```groovy
+```groovy title="conf/modules.config"
 process {
     withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW_ONE:PROCESS' {
          publishDir = [
@@ -46,6 +46,12 @@ WARN: There's no process matching config selector: <PIPELINE>:<WORKFLOW>:<SUBWOR
 
 ...huh? :thinking:
 
+You can see the problem for yourself in an actual pipeline by using [GitPod](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas/blob/main/docs/gotchas/process-selector-warn.md) or getting a copy of the project and navigating to `examples/process-selector-warn`. Where you execute the following command:
+
+```bash
+nextflow -c conf/problem.config run main.nf --skip_hello
+```
+
 ## Solution
 
 Apparently, the different ways of specifying a module using the [`withName` selector](https://www.nextflow.io/docs/latest/config.html#process-selectors) have different behaviours.
@@ -57,21 +63,15 @@ Here, your solutions are:
 
 1. Give each of the two processes a unique name via an [alias](https://www.nextflow.io/docs/latest/dsl2.html#module-aliases) and use that in the configuration file.
 
-    `subworkflows/subworkflow_one.nf`:
-
-    ```groovy
+    ```groovy title="subworkflows/subworkflow_one.nf"
     include { PROCESS as PROCESS_ONE } from 'modules/process_module'
     ```
 
-    `subworkflows/subworkflow_two.nf`:
-
-    ```groovy
+    ```groovy title="subworkflows/subworkflow_two.nf"
     include { PROCESS as PROCESS_TWO } from 'modules/process_module'
     ```
 
-    Configuration:
-
-    ```groovy
+    ```groovy title="conf/modules.config"
     process {
         withName: 'PROCESS_ONE' {
             publishDir = [
@@ -86,9 +86,9 @@ Here, your solutions are:
     }
     ```
 
-2. Wrap the `withName` selector for the module **also** in the configuration file:
+2. Make the `withName` selector for the module **also** conditional in the configuration file:
 
-    ```groovy
+    ```groovy title="conf/modules.config"
     process {
         if ( param.run_module ) {
             withName: 'PIPELINE:WORKFLOW:SUBWORKFLOW_ONE:PROCESS' {
@@ -104,3 +104,9 @@ Here, your solutions are:
         }
     }
     ```
+
+You can see the solution for yourself in an actual pipeline by using [GitPod](https://gitpod.io/#https://github.com/Midnighter/nextflow-gotchas/blob/main/docs/gotchas/process-selector-warn.md) or getting a copy of the project and navigating to `examples/process-selector-warn`. Where you execute the following command:
+
+```bash
+nextflow -c conf/solution.config run main.nf --skip_hello
+```
