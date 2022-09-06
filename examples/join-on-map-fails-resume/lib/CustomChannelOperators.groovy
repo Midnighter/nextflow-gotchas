@@ -6,7 +6,7 @@ class CustomChannelOperators {
     /**
      * Join two channels by one or more keys from a map contained in each channel.
      *
-     * The channel elements are assumed to be tuples whose size it at least two.
+     * The channel elements are assumed to be tuples whose size is at least two.
      * Typically, the maps to join by are in the first position of the tuples.
      * Please read https://www.nextflow.io/docs/latest/operator.html#join carefully.
      *
@@ -27,19 +27,23 @@ class CustomChannelOperators {
             int leftBy = 0,
             int rightBy = 0
     ) {
-        def keys = key instanceof List ? key : [ key ]
-        // Extract desired keys from the left map at the given position and prepend them.
+        List keys = key instanceof List ? key : [ key ]
+
+        // Extract desired keys from the left map, located at `leftBy`, and prepend them.
         def newLeft = left.map { it[leftBy].subMap(keys).values() + it }
-        // Extract desired keys from the right map at the given position and prepend them.
+
+        // Extract desired keys from the right map, located at `rightBy`, and prepend them.
         // Also drop the map itself from the right.
         def newRight = right.map {
             it[rightBy].subMap(keys).values() +
             it[0..<rightBy] +
-            it[(rightBy + 1)..<it.size()]
+            it[rightBy<..<it.size()]
         }
+
         // Set the positions to join on explicitly.
         joinArgs.by = 0..<keys.size()
-        // Actually join the channels and drop the keys used for comparison.
+
+        // Apply the join channel operator to the channels and finally drop the keys used for joining tuples.
         return newLeft.join(joinArgs, newRight).map { it[keys.size()..<it.size()] }
     }
 
