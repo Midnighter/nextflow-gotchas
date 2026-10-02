@@ -113,4 +113,4 @@ nextflow -c conf/solution.config run main.nf --skip_hello
 
 ## Recommendation
 
-Use Nextflow 26.04 or later, where this warning no longer appears for processes in a disabled `if` block. With Nextflow 25.10, set `NXF_SYNTAX_PARSER=v2` to get the same behavior. Nextflow still warns about a selector that matches no process, and suggests the closest process name for a typo.
+Use Nextflow 26.04 or later, where this warning no longer appears for processes in a disabled `if` block. Nextflow still warns about a selector that matches no process, and suggests the closest process name for a typo.
