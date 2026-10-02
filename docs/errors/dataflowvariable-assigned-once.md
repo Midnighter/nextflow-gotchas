@@ -21,3 +21,11 @@ PROCESS
     .vcfs
     .flatten
 ```
+
+## Recommendation
+
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) then reports the missing parentheses at the line where they are missing:
+
+```output
+Error main.nf:14:5: Unrecognized property `flatten` for type Channel<Set<Path>>
+```

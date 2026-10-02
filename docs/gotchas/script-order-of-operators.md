@@ -58,3 +58,24 @@ FOO:
 BAR:
   bar: '2.0.0'
 ```
+
+## Recommendation
+
+Use [topic channels](https://docs.seqera.io/nextflow/tutorials/topic-channels). Each process sends its versions file to a topic, and the workflow reads the topic once, so the order of the statements doesn't matter:
+
+```nextflow
+process FOO {
+    output:
+    path 'foo.yml', topic: versions
+
+    // ...
+}
+
+workflow {
+    FOO()
+    CUSTOM_DUMPSOFTWAREVERSIONS( channel.topic('versions').collect() )
+    BAR()
+}
+```
+
+Here `CUSTOM_DUMPSOFTWAREVERSIONS` gets the versions of both `FOO` and `BAR`, even though `BAR` is called after it. Typed processes declare topics in the [`topic:` section](https://docs.seqera.io/nextflow/process-typed#topics).

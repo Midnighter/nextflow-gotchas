@@ -107,3 +107,13 @@ executor >  local (1)
 ```
 
 Hope this helps, it can be quite baffling.
+
+## Recommendation
+
+Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) with Nextflow 26.10 or later. It reports a variable used outside the block where it was declared, for example:
+
+```output
+Error main.nf:5:21: `message` is not defined
+```
+
+This includes a `def` variable from `script:` used in `output:`. The error described under "Mixing variables" no longer happens.

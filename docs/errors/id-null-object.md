@@ -25,3 +25,7 @@ In most cases `meta.id` does exist, it is just not accessible by Nextflow in the
     - Other parts of an input channel are incorrectly nested e.g. `[meta] [[reads1.fq, reads2.fq]]` when should be `[meta] [reads1.fq, reads2.fq]`
 - Two separate input channels both have a `meta.id` tag (i.e., Nextflow doesn't know which one to take).
 - Can also occur when `meta.id` tag is specified the `tag` block of a module, but `meta` is not supplied as input.
+
+## Recommendation
+
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later, and declare the process input as a [record](https://docs.seqera.io/nextflow/process-typed#record-inputs) or a typed tuple. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) then reports a wrongly nested meta map or reads list at the line where the process is called. It also reports `meta` used in a process that has no `meta` input, with or without static typing.

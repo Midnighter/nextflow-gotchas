@@ -20,3 +20,11 @@ You get the following error, connected to the whole workflow
         .bam
         .set{ch_bams}
     ```
+
+## Recommendation
+
+Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) with Nextflow 26.10 or later. It reports the error on the line after the stray `.`, instead of at the workflow definition:
+
+```output
+Error main.nf:8:10: Unexpected input: 'out'
+```

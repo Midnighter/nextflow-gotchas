@@ -110,3 +110,7 @@ You can see the solution for yourself in an actual pipeline by using [GitPod](ht
 ```bash
 nextflow -c conf/solution.config run main.nf --skip_hello
 ```
+
+## Recommendation
+
+Use Nextflow 26.10 or later, where this warning no longer appears for processes in a disabled `if` block. Nextflow still warns about a selector that matches no process, and suggests the closest process name for a typo.

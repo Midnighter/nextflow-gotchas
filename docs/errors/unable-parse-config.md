@@ -20,3 +20,11 @@ Syntax error in `modules.config`, such as:
 3. Missing `{` or `}` somewhere
 
 Mentioned line numbers OR mentioned sign are not indicative of where to search for the error, i.e., in the above example the actual problem was a duplicated `=`.
+
+## Recommendation
+
+Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) on your config files with Nextflow 26.10 or later. It reports a missing comma or a duplicated `=` at the line where it happens. A missing `}` is reported at the end of the file, with a hint:
+
+```output
+Error nextflow.config:9:1: Unexpected end of file -- check for an unclosed brace, bracket, parenthesis, or string
+```

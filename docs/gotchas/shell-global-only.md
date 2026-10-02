@@ -134,3 +134,19 @@ bar
 ```
 
 Smooth :sunglasses:
+
+## Recommendation
+
+Use a [`script:`](https://docs.seqera.io/nextflow/process#script) block instead. The `shell:` block is deprecated, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) warns about it. In a `script:` block, local variables work as expected:
+
+```nextflow
+process ECHO {
+    script:
+    def args = task.ext.args ?: 'bar'
+    """
+    echo ${args}
+    """
+}
+```
+
+Escape Bash variables in a `script:` block as `\$VAR`.

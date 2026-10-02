@@ -21,3 +21,7 @@ well with various nextflow operators, but, surprisingly, this way does not work 
 Quick workarounds could be i) using `[0]` to specify the channel explicitly, e.g. `PROCESS_NAME.out[0]`,
 ii) using named output, or iii) use a `map` operator before the `dump` operator. Examples can be 
 found in issue [#3](https://github.com/Midnighter/nextflow-gotchas/issues/3)
+
+## Recommendation
+
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports each of the mistakes above. A typed process call returns its output directly, so you don't need `.out` or `.out[0]`. `dump` is discouraged with static typing, so use [`view`](https://docs.seqera.io/nextflow/reference/stdlib-types/channel#view) to inspect a channel instead.
