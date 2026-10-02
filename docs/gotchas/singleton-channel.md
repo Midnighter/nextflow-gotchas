@@ -72,3 +72,19 @@ Combinatorics, wheee
 executor >  local (60)
 [09/71172f] process > ECHO (60) [100%] 60 of 60 ✔
 ```
+
+## Recommendation
+
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. A typed process accepts at most one channel argument, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports a call with more than one:
+
+```output
+Error main.nf:18:5: Process `ECHO` was called with multiple channel arguments which can lead to non-deterministic behavior -- make sure that at most one argument is a channel and that all other arguments are dataflow values
+```
+
+Pass the other arguments as plain values or value channels instead:
+
+```nextflow
+ECHO(channel.fromList(1..20), 'arg')
+```
+
+In typed code, create a channel from a range with `channel.fromList(1..20)` instead of `channel.of(1..20)`.

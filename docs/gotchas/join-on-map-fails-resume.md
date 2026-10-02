@@ -66,3 +66,20 @@ In order to generally, safely join two channels on a map key, I therefore propos
 ```groovy title="lib/CustomChannelOperators.groovy" linenums="1"
 --8<-- "join-on-map-fails-resume/lib/CustomChannelOperators.groovy"
 ```
+
+## Recommendation
+
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later, and use [records](https://docs.seqera.io/nextflow/script#records-and-tuples) for sample metadata. The typed [`join`](https://docs.seqera.io/nextflow/reference/stdlib-types/channel#join) works on records and joins on a field, so you can join on the sample `id` directly:
+
+```nextflow
+ch_joined = left.join(right, by: 'id')
+```
+
+Unmatched records are discarded by default, and the typed `join` has no `failOnMismatch` option. To fail on unmatched records instead, use `remainder: true` and check for records that are missing fields from either side:
+
+```nextflow
+left.join(right, by: 'id', remainder: true).subscribe { r ->
+    if( r.count == null || r.reads == null )
+        error("Unmatched sample: ${r.id}")
+}
+```

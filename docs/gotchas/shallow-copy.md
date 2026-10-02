@@ -60,3 +60,17 @@ executor >  local (4)
 ```
 
 In some cases where you have nested mutable objects you may have to create a [deep copy](https://stackoverflow.com/a/13155429).
+
+## Recommendation
+
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later, and use [records](https://docs.seqera.io/nextflow/script#records-and-tuples) instead of maps for sample metadata. Records can't be modified, so one use of a channel can't change what another process sees, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports any attempt to assign a field:
+
+```output
+Error main.nf:6:9: Record fields cannot be assigned -- records are immutable
+```
+
+To change a field, create a new record instead:
+
+```nextflow
+ch_input.map { meta -> meta + record(id: 'foo') }
+```
