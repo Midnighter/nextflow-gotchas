@@ -110,7 +110,7 @@ Hope this helps, it can be quite baffling.
 
 ## Recommendation
 
-Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) with Nextflow 26.10 or later. It reports a variable used outside the block where it was declared, for example:
+Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) with Nextflow 25.04 or later. It reports a variable used outside the block where it was declared, for example:
 
 ```output
 Error main.nf:5:21: `message` is not defined

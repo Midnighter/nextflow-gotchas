@@ -23,7 +23,7 @@ Mentioned line numbers OR mentioned sign are not indicative of where to search f
 
 ## Recommendation
 
-Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) on your config files with Nextflow 26.10 or later. It reports a missing comma or a duplicated `=` at the line where it happens. A missing `}` is reported at the end of the file, with a hint:
+Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) on your config files with Nextflow 25.04 or later. It reports a missing comma or a duplicated `=` at the line where it happens. A missing `}` is reported at the end of the file, and Nextflow 26.10 adds a hint:
 
 ```output
 Error nextflow.config:9:1: Unexpected end of file -- check for an unclosed brace, bracket, parenthesis, or string
