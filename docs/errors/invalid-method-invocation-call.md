@@ -55,7 +55,7 @@ can help you spot a mismatch between expected and actual channel content.
 
 ## Recommendation
 
-Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports a closure whose parameters don't match the channel item, at the line where it happens:
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports a closure whose number of parameters doesn't match the channel item, at the line where it happens:
 
 ```nextflow
 ch_input = channel.of(tuple('foo', 'bar', 'baz'))
@@ -63,7 +63,7 @@ ch_input.map { one, two -> one }
 ```
 
 ```output
-Error main.nf:5:18: Closure with signature (?, ?) -> ? is not compatible with expected signature: (String, String, String) -> R
+Error main.nf:5:18: Closure with signature (?, ?) -> ? is not compatible with expected signature: (E) -> R
 ```
 
 Only tuples can be destructured in typed code, so create channel items with `tuple()`, or use [records](https://docs.seqera.io/nextflow/script#records-and-tuples) and access fields by name.
