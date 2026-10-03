@@ -22,7 +22,7 @@ input channel.
 You will get the error if the input channel has additional or fewer elements
 than defined in the closure function.
 
-```nextflow
+```groovy
 ch_input = Channel.of(['foo', 'bar', 'baz'])
 
 ch_input.map{ one, two -> [one] }
@@ -30,7 +30,7 @@ ch_input.map{ one, two -> [one] }
 
 or
 
-```nextflow
+```groovy
 ch_input = Channel.of(['foo'])
 
 ch_input.map{ one, two -> [one] }
@@ -41,7 +41,7 @@ ch_input.map{ one, two -> [one] }
 To fix, ensure that whenever you define variables to elements there is a one to
 one ratio of variable names to elements
 
-```nextflow
+```groovy
 ch_input = Channel.of(['foo', 'bar', 'baz'])
 
 ch_input.map{ one, two, three -> [one] }
@@ -49,15 +49,17 @@ ch_input.map{ one, two, three -> [one] }
 
 Note that the error message does not report where this happens, so you will have
 to look for all cases of a closure being applied to the channel with the channel
-contents as reported in the error, to find where this occurs. Liberal use of the
-[dump](https://www.nextflow.io/docs/latest/operator.html#dump) channel operator
-can help you spot a mismatch between expected and actual channel content.
+contents as reported in the error, to find where this occurs (see the
+recommendation below for a way to get the exact line). Liberal use of the
+[dump](https://www.nextflow.io/docs/latest/operator.html#dump) or
+[view](https://docs.seqera.io/nextflow/reference/stdlib-types/channel#view) channel
+operator can help you spot a mismatch between expected and actual channel content.
 
 ## Recommendation
 
-Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports a closure whose number of parameters doesn't match the channel item, at the line where it happens:
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports a closure whose number of parameters doesn't match the channel item, at the line where it happens (line numbers refer to the full script):
 
-```nextflow
+```groovy
 ch_input = channel.of(tuple('foo', 'bar', 'baz'))
 ch_input.map { one, two -> one }
 ```

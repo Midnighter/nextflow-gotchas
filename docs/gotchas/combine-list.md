@@ -271,9 +271,9 @@ Parameter: 5
 
 ## Recommendation
 
-Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. In typed code, `collect()` emits a single bag that `combine` doesn't flatten, so `ch_param.combine(ch_files.collect())` gives `[n, [f1, f2, f3]]` without any workaround. Declare the process input as a `Bag<Path>` to match:
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. In typed code, `collect()` emits a single bag that `combine` doesn't flatten, so `ch_param.combine(ch_files.collect())` gives `[n, [f1, f2, f3]]`, and none of the workarounds above are needed. Declare the process input as a `Bag<Path>` to match:
 
-```nextflow
+```groovy
 process CAT {
     input:
     tuple(number: Integer, files: Bag<Path>)
@@ -281,5 +281,3 @@ process CAT {
     // ...
 }
 ```
-
-In typed code, create a channel from a range with `channel.fromList(1..5)` instead of `channel.of(1..5)`.
