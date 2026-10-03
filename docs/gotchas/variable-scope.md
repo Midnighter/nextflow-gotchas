@@ -106,7 +106,9 @@ executor >  local (1)
 [c2/70f706] process > ECHO [100%] 1 of 1 ✔
 ```
 
-Hope this helps, it can be quite baffling.
+!!! note
+
+    This error no longer happens with Nextflow 25.04 or later.
 
 ## Recommendation
 
@@ -116,4 +118,6 @@ Run [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) with N
 Error main.nf:5:21: `message` is not defined
 ```
 
-This includes a `def` variable from `script:` used in `output:`. The error described under "Mixing variables" no longer happens.
+This includes a `def` variable from `script:` used in `output:`.
+
+Hope this helps, it can be quite baffling.

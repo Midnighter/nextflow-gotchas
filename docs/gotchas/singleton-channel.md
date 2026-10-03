@@ -25,7 +25,7 @@ executor >  local (1)
 
 ## Solution
 
-Channels can be turned into [value channels](https://www.nextflow.io/docs/latest/channel.html#value-channel) which can never be exhausted and read an unlimited number of times. A simple way to do this is by applying the operator [`first`](https://www.nextflow.io/docs/latest/operator.html#first).
+Channels can be turned into [dataflow values](https://docs.seqera.io/nextflow/reference/stdlib-types/value) which can never be exhausted and read an unlimited number of times. A simple way to do this is by applying the operator [`first`](https://www.nextflow.io/docs/latest/operator.html#first).
 
 ```groovy title="solution.nf" linenums="1" hl_lines="27"
 --8<-- "singleton-channel/solution.nf"
@@ -46,13 +46,13 @@ Please note the following admonition from the nextflow documentation:
 
 !!! note
 
-    A value channel is implicitly created by a process when an input specifies a simple value in the `from` clause. Moreover, a value channel is also implicitly created as output for a process whose inputs are only value channels.
+    A dataflow value is implicitly created by a process when an input specifies a simple value in the `from` clause. Moreover, a dataflow value is also implicitly created as output for a process whose inputs are only dataflow values.
 
-This means that a process that gets passed a value and, for example, downloads a file, implicitly has a value channel created for that file and it can be reused indefinitely.
+This means that a process that gets passed a value and, for example, downloads a file, implicitly has a dataflow value created for that file and it can be reused indefinitely.
 
 ## Combinations
 
-If you have multiple channels of different numbers of elements but more than one element such that a value channel is not an option, you can apply some transformations to achieve the correct outcome.
+If you have multiple channels of different numbers of elements but more than one element such that a dataflow value is not an option, you can apply some transformations to achieve the correct outcome.
 
 ```groovy title="combinations.nf" linenums="1" hl_lines="27-32 34"
 --8<-- "singleton-channel/combinations.nf"
@@ -73,6 +73,8 @@ executor >  local (60)
 [09/71172f] process > ECHO (60) [100%] 60 of 60 ✔
 ```
 
+With static typing, skip `multiMap`: pass the combined channel as the single channel argument and declare a tuple input. See the recommendation below.
+
 ## Recommendation
 
 Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. A typed process accepts at most one channel argument, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) reports a call with more than one:
@@ -83,8 +85,6 @@ Error main.nf:18:5: Process `ECHO` was called with multiple channel arguments wh
 
 Pass the other arguments as plain values or dataflow values instead:
 
-```nextflow
+```groovy
 ECHO(channel.fromList(1..20), 'arg')
 ```
-
-In typed code, create a channel from a range with `channel.fromList(1..20)` instead of `channel.of(1..20)`.

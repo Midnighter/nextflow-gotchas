@@ -54,6 +54,10 @@ nextflow -c conf/problem.config run main.nf --skip_hello
 
 ## Solution
 
+!!! note
+
+    This applies to Nextflow versions before 26.04. See the recommendation below.
+
 Apparently, the different ways of specifying a module using the [`withName` selector](https://www.nextflow.io/docs/latest/config.html#process-selectors) have different behaviours.
 
 -   Only an explicit module name can cope with 'optional' execution and have a selector still picked up, even if it's 'turned off'.
@@ -113,4 +117,4 @@ nextflow -c conf/solution.config run main.nf --skip_hello
 
 ## Recommendation
 
-Use Nextflow 26.04 or later, where this warning no longer appears for processes in a disabled `if` block. Nextflow still warns about a selector that matches no process, and suggests the closest process name for a typo.
+Use Nextflow 26.04 or later, where this warning no longer appears for processes in a disabled `if` block, so neither workaround above is needed. Nextflow still warns about a selector that matches no process, and suggests the closest process name for a typo.

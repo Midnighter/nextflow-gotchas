@@ -61,9 +61,9 @@ BAR:
 
 ## Recommendation
 
-Use [topic channels](https://docs.seqera.io/nextflow/tutorials/topic-channels). Each process sends its versions file to a topic, and the workflow reads the topic once, so the order of the statements doesn't matter:
+For collecting versions or similar outputs from many processes, use [topic channels](https://docs.seqera.io/nextflow/tutorials/topic-channels) with Nextflow 25.04 or later. Each process sends its versions file to a topic, and the workflow reads the topic once, so the order of the statements doesn't matter:
 
-```nextflow
+```groovy
 process FOO {
     output:
     path 'foo.yml', topic: versions

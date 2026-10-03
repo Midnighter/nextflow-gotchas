@@ -137,9 +137,9 @@ Smooth :sunglasses:
 
 ## Recommendation
 
-Use a [`script:`](https://docs.seqera.io/nextflow/process#script) block instead. The `shell:` block is deprecated, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) warns about it. In a `script:` block, local variables work as expected:
+Use a [`script:`](https://docs.seqera.io/nextflow/process#script) block instead. The `shell:` block is deprecated, and [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) warns about it with Nextflow 25.04 or later. In a `script:` block, local variables work as expected, so the global-variable workaround above isn't needed:
 
-```nextflow
+```groovy
 process ECHO {
     script:
     def args = task.ext.args ?: 'bar'

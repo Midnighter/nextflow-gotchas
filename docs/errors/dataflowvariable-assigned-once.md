@@ -24,7 +24,7 @@ PROCESS
 
 ## Recommendation
 
-Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) then reports the missing parentheses at the line where they are missing:
+Use [static typing](https://docs.seqera.io/nextflow/static-typing) with Nextflow 26.10 or later. [`nextflow lint`](https://docs.seqera.io/nextflow/reference/cli/lint) then reports the missing parentheses at the line where they are missing (line numbers refer to the full script):
 
 ```output
 Error main.nf:14:5: Unrecognized property `flatten` for type Channel<Set<Path>>
